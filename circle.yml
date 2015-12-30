@@ -1,0 +1,18 @@
+machine:
+  services:
+    - docker
+  java:
+    version: oraclejdk8
+
+dependencies:
+  override:
+    - docker info
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - gradle build && cp -R build/libs $CIRCLE_ARTIFACTS
+      - docker build -t "spike234/configservice:$CIRCLE_BUILD_NUM" .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push "spike234/configservice:$CIRCLE_BUILD_NUM"
