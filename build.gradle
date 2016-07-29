@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.3.6.RELEASE'
+		springBootVersion = '1.4.0.RELEASE'
 		springCloudVersion = '1.1.2.RELEASE'
 
 	}
@@ -33,6 +33,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile("org.springframework.cloud:spring-cloud-config-server:${springCloudVersion}")
+	compile('org.springframework.boot:spring-boot-starter-actuator:1.4.0.RELEASE')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
